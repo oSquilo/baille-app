@@ -1,0 +1,19 @@
+{
+  "name": "baille",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Baille — crie músicas em minutos e mostre pra comunidade.",
+  "scripts": {
+    "dev": "npx --yes serve docs -l 8080",
+    "android:prepare": "npx cap add android && npx capacitor-assets generate --android --iconBackgroundColor \"#040308\" --iconBackgroundColorDark \"#040308\" --splashBackgroundColor \"#040308\" --splashBackgroundColorDark \"#040308\" && npx cap sync android",
+    "android:apk": "cd android && ./gradlew assembleDebug"
+  },
+  "dependencies": {
+    "@capacitor/android": "6.2.1",
+    "@capacitor/core": "6.2.1"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "6.2.1",
+    "@capacitor/assets": "3.0.5"
+  }
+}

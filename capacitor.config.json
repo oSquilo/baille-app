@@ -1,0 +1,11 @@
+{
+  "appId": "app.baille.music",
+  "appName": "Baille",
+  "webDir": "docs",
+  "android": {
+    "backgroundColor": "#040308"
+  },
+  "server": {
+    "androidScheme": "https"
+  }
+}
