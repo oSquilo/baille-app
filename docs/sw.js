@@ -12,8 +12,7 @@ const SHELL = [
  "icons/icon-512.png",
  "icons/logo.png",
  "icons/mark.png",
- "icons/favicon.png",
- "assets/img/d813e62d5c8b66d6fa6ec0c37661c22c.jpg"
+ "icons/favicon.png"
 ];
 self.addEventListener('install', (e) => { e.waitUntil(caches.open(CACHE).then((c) => c.addAll(SHELL)).then(() => self.skipWaiting())); });
 self.addEventListener('activate', (e) => { e.waitUntil(caches.keys().then((ks) => Promise.all(ks.filter((k) => k !== CACHE).map((k) => caches.delete(k)))).then(() => self.clients.claim())); });
