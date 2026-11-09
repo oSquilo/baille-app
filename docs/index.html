@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <title>Baille</title>
 <meta name="description" content="Crie músicas em minutos e mostre pra comunidade.">
-<meta name="theme-color" content="#0D0C12">
+<meta name="theme-color" content="#1B1B1B">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -17,16 +17,34 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&amp;family=Figtree:wght@400;500;600;700&amp;family=Bebas+Neue&amp;family=Playfair+Display:ital,wght@0,700;1,700&amp;family=Permanent+Marker&amp;family=Space+Mono:wght@700&amp;family=Pacifico&amp;family=Anton&amp;family=Caveat:wght@700&amp;display=swap">
 <style>
-html,body{margin:0;height:100%;background:#0D0C12;overscroll-behavior:none;-webkit-text-size-adjust:100%}
-#app{position:fixed;left:0;right:0;top:0;bottom:0;margin:0 auto;max-width:520px;overflow:hidden;background:#0D0C12;
+html,body{margin:0;height:100%;background:#1B1B1B;overscroll-behavior:none;-webkit-text-size-adjust:100%}
+#app{position:fixed;left:0;right:0;top:0;bottom:0;margin:0 auto;max-width:520px;overflow:hidden;background:#1B1B1B;
  padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom);box-sizing:border-box}
 .bapp-page{position:relative;width:100%;height:100%}
-#boot{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#040308}
-#boot img{width:132px;height:132px;animation:bootp 1.1s cubic-bezier(.4,0,.2,1) infinite alternate}
+#boot{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#1B1B1B}
+#boot img{width:96px;height:96px;opacity:0}
 @keyframes bootp{from{transform:scale(.92);opacity:.7}to{transform:scale(1.04);opacity:1}}
+#splash{position:fixed;inset:0;z-index:9999;overflow:hidden;display:flex;align-items:center;justify-content:center;background:radial-gradient(80% 55% at 50% 42%,rgba(0,82,255,.28),rgba(27,27,27,0) 70%),#1B1B1B;transition:opacity .5s ease,transform .5s cubic-bezier(.2,.8,.2,1);will-change:opacity,transform}
+#splash.out{opacity:0;transform:scale(1.04);pointer-events:none}
+.s-logo{position:relative;z-index:2;width:190px;height:auto;opacity:0;transform:scale(.9);filter:blur(10px);animation:s-Logo .9s cubic-bezier(.2,.8,.2,1) .2s forwards}
+@keyframes s-Logo{to{opacity:1;transform:none;filter:none}}
+@media (prefers-reduced-motion:reduce){.s-logo{animation:none;opacity:1;transform:none;filter:none}}
+#splash.quick .s-logo{animation-delay:.1s;animation-duration:.6s}
 </style>
 </head>
 <body>
+<div id="splash" role="img" aria-label="Baille">
+<img class="s-logo" src="icons/logo.png" alt="baille.">
+</div>
+<script>
+(function () {
+  var el = document.getElementById('splash'); var first = true;
+  try { first = !localStorage.getItem('bailleSplashSeen'); localStorage.setItem('bailleSplashSeen', '1'); } catch (e) {}
+  if (!first) el.className = 'quick';
+  var hold = first ? 2200 : 1300;
+  setTimeout(function () { el.classList.add('out'); setTimeout(function () { if (el.parentNode) el.parentNode.removeChild(el); }, 560); }, hold);
+})();
+</script>
 <div id="app"><div id="boot"><img src="icons/mark.png" alt="Baille"></div></div>
 <noscript style="color:#fff">Ative o JavaScript para usar o Baille.</noscript>
 <script src="vendor/preact.umd.js"></script>

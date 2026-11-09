@@ -37,7 +37,7 @@ jobs:
       - name: Criar projeto Android, ícone e tela de abertura
         run: |
           npx cap add android
-          npx capacitor-assets generate --android --iconBackgroundColor "#040308" --iconBackgroundColorDark "#040308" --splashBackgroundColor "#040308" --splashBackgroundColorDark "#040308"
+          npx capacitor-assets generate --android --iconBackgroundColor "#1B1B1B" --iconBackgroundColorDark "#1B1B1B" --splashBackgroundColor "#1B1B1B" --splashBackgroundColorDark "#1B1B1B"
           npx cap sync android
 
       - name: Usar a mesma chave em todas as versões (permite atualizar por cima)
@@ -61,8 +61,8 @@ jobs:
       - name: Publicar na página de Releases
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v1.0.${{ github.run_number }}
-          name: Baille 1.0.${{ github.run_number }}
+          tag_name: v1.1.${{ github.run_number }}
+          name: Baille 1.1.${{ github.run_number }}
           body: |
             Baixe o **Baille.apk** abaixo pelo celular Android e toque nele para instalar.
             Se o Android pedir, permita "instalar apps desta fonte".
